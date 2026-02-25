@@ -2,6 +2,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.SecureRandom;
 import java.security.spec.KeySpec;
+import java.util.Arrays;
 import java.util.Base64;
 
 public class pinAuth {
@@ -40,6 +41,31 @@ public class pinAuth {
     }
 
 
+    public boolean verifyPassword(String inputPasword, String storedHashData) throws Exception{
+
+        String[] parts = storedHashData.split(":");
+        String saltBase64 = parts[0];//stores salt
+        String storedHashBase64 = parts[1];// stores the hashed code
+        int iteration = Integer.parseInt(parts[2]);// stores Iteration counts
+        int key_lenght  = Integer.parseInt(parts[3]);// Stores key lenght
+
+
+        byte[] salt = Base64.getDecoder().decode(saltBase64);
+        byte[] storedHash = Base64.getDecoder().decode(storedHashBase64);
+
+        KeySpec key_spec = new PBEKeySpec(
+          inputPasword.toCharArray(),
+          salt,
+          iteration,
+          key_lenght
+        );
+
+        SecretKeyFactory key_factory  =  SecretKeyFactory.getInstance(ALGORITHM);
+
+        byte[] compute  = key_factory.generateSecret(key_spec).getEncoded();
+
+        return Arrays.equals(compute,storedHash);
+    }
 
 
 }
