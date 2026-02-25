@@ -1,25 +1,37 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        String pin;
-        double balance;
-        double last_transaction;
-        double deposit;
 
-        pinAuth userPin_auth = new pinAuth();
+        pinAuth auth = new pinAuth();
+
+        String pin = "2026";
+
+        // hashing user pin
+        String storedHashedPin = auth.hashPin(pin);
 
         Scanner userPin = new Scanner(System.in);
-        System.out.println("Enter Pin : ");
+        System.out.println("Enter pin: ");
 
         try{
 
+            //Verify user pin by comparing the stored hashed pin with provided user pin
+            boolean verifyPin = auth.verifyPin(userPin.nextLine(),storedHashedPin);
+
+            // checks if the provided pin is correct
+            if (verifyPin){
+                System.out.println("Pin correct, welcome.");
+            } else {
+                System.out.println("incorrect pin. try again!");
+            }
 
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
+
+
 
 
 

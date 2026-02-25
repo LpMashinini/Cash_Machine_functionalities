@@ -7,8 +7,8 @@ import java.util.Base64;
 
 public class pinAuth {
 
-    private static String ALGORITHM = "PBKDF2withHmacSHA512";
-    private static final int Iteration = 65536;
+    private static final String ALGORITHM = "PBKDF2withHmacSHA512";
+    private static final int Iteration = 65536; // slows down brute attacks
     private static final int KEY_LENGTH = 512;
     private static final int SALT_LENGTH = 16;
 
@@ -43,13 +43,13 @@ public class pinAuth {
     public boolean verifyPin(String inputPin, String storedHashPin) throws Exception {
 
         String[] parts = storedHashPin.split(":"); // splitting the passed hashed pin value
-        String saltBase = parts[0];
-        String storedHashedBase64 = parts[1];
-        int iteration = Integer.parseInt(parts[2]);
-        int keyLength = Integer.parseInt(parts[3]);
+        String saltBase = parts[0]; // stores the salt
+        String storedHashedBase64 = parts[1]; // stores the hashed values
+        int iteration = Integer.parseInt(parts[2]); // stores the iteration value
+        int keyLength = Integer.parseInt(parts[3]); // stores the key length value
 
-        byte[] salt = Base64.getDecoder().decode(saltBase);
-        byte[] storedHash = Base64.getDecoder().decode(storedHashedBase64);
+        byte[] salt = Base64.getDecoder().decode(saltBase); // decode the hashed salt
+        byte[] storedHash = Base64.getDecoder().decode(storedHashedBase64); // decode the hashed values
 
         KeySpec key_Spec = new PBEKeySpec(
                 inputPin.toCharArray(),
@@ -61,7 +61,7 @@ public class pinAuth {
         SecretKeyFactory key_Factory = SecretKeyFactory.getInstance(ALGORITHM);
         byte[] computeHash = key_Factory.generateSecret(key_Spec).getEncoded();
 
-        return Arrays.equals(computeHash,storedHash);
+        return Arrays.equals(computeHash,storedHash); //stores and compare the provided values
     }
 
 
