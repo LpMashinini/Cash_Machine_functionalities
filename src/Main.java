@@ -38,6 +38,8 @@ public class Main {
                     int amount  = userAmount.nextInt(); // user inserted amount to withdraw
 
                     machineProcces.withdrawAmount(amount);
+                } else if (userSelect == 2) {
+                    machineProcces.getAvailBalance();
                 }
 
             } else {

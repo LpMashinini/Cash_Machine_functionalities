@@ -33,5 +33,12 @@ public class cashMachineProcces {
     }
 
 
+    public int getAvailBalance(){
+
+        System.out.println("Available Balance : " + availBalance);
+        return  availBalance;
+    }
+
+
 
 }
