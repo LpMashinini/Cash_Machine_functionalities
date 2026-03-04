@@ -40,6 +40,13 @@ public class Main {
                     machineProcces.withdrawAmount(amount);
                 } else if (userSelect == 2) {
                     machineProcces.getAvailBalance();
+                } else if (userSelect == 3) {
+                    //deposit
+                    Scanner userDeposit = new Scanner(System.in);
+                    System.out.println("Enter amount to deposit : ");
+                    double deposit = userDeposit.nextDouble();
+
+                    machineProcces.deposit(deposit);
                 }
 
             } else {

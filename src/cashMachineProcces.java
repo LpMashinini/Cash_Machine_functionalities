@@ -39,6 +39,15 @@ public class cashMachineProcces {
         return  availBalance;
     }
 
+    public double deposit(double userDeposit){
+
+        double new_availableBalance = availBalance + userDeposit;
+        System.out.println("Previous balance : " + availBalance);
+        System.out.println("New available balance : " + new_availableBalance);
+
+        return new_availableBalance;
+    }
+
 
 
 }
