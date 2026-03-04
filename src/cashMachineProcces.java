@@ -1,6 +1,6 @@
 public class cashMachineProcces {
 
-    int balance = 50000;
+    int availBalance = 5000;
     int cashLimit = 2500;
     int cash;
 
@@ -12,15 +12,26 @@ public class cashMachineProcces {
         System.out.println("4) previous transactions");
         System.out.println("5) Transfer");
         System.out.println("4) Return Card");
+
     }
 
     public int withdrawAmount(int userWithdraw){
 
-        int cash  = userWithdraw - balance;
+        int balance = 0;
 
-        System.out.println("Available balance: " + balance);
+        if(userWithdraw > availBalance){
+            System.out.println("Amount exceed available amount");
+        } else if (userWithdraw > cashLimit) {
+            System.out.println("Amount exceed limit");
+        } else {
+            balance  =  availBalance - userWithdraw;
+            System.out.println("Available balance: " + balance);
 
-        return cash;
+        }
+
+        return balance;
     }
+
+
 
 }

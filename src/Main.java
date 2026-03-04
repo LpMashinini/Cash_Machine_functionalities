@@ -31,9 +31,13 @@ public class Main {
                 int userSelect = userSelectInput.nextInt();
 
                 if (userSelect == 1){
-                    Scanner userAmount = new Scanner(System.in);
-                    int amount  = userAmount.nextInt();
+
                     System.out.println("Enter an amount to withdraw: ");
+
+                    Scanner userAmount = new Scanner(System.in);
+                    int amount  = userAmount.nextInt(); // user inserted amount to withdraw
+
+                    machineProcces.withdrawAmount(amount);
                 }
 
             } else {
