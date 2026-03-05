@@ -55,18 +55,24 @@ public class Main {
                     machineProcces.deposit(deposit); // Calls the deposit method and pass the deposit amount as a parameter
 
                 } else if (userSelect == 4) {
+                    //checks if user selected the Transfer option
 
                     Scanner userTransfer = new Scanner(System.in);
 
                     System.out.println("Enter amount to transfer : ");
-                    double transfer = userTransfer.nextDouble();
+                    double transfer = userTransfer.nextDouble(); //stores the amount to be transferred
 
-                    machineProcces.transfer(transfer);
+                    machineProcces.transfer(transfer); // calls the transfer method and pass the transfer amount as an argument
                 } else if (userSelect == 5) {
-                    machineProcces.returnCard();
+                    //checks if user selected the return card option
+                    machineProcces.returnCard(); // calls the method to exit the application
+                } else {
+                    //the output if the user entered the incorrect value.
+                    System.out.println("Enter correct number.");
                 }
 
             } else {
+                //the output if the user entered the incorrect pin.
                 System.out.println("incorrect pin. try again!");
             }
 
