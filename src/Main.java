@@ -47,7 +47,16 @@ public class Main {
                     double deposit = userDeposit.nextDouble();
 
                     machineProcces.deposit(deposit);
+                } else if (userSelect == 4) {
+
+                    Scanner userTransfer = new Scanner(System.in);
+
+                    System.out.println("Enter amount to transfer : ");
+                    double transfer = userTransfer.nextDouble();
+
+                    machineProcces.transfer(transfer);
                 }
+
 
             } else {
                 System.out.println("incorrect pin. try again!");

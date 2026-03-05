@@ -1,6 +1,6 @@
 public class cashMachineProcces {
 
-    int availBalance = 5000;
+    double availBalance = 5000;
     int cashLimit = 2500;
     int cash;
 
@@ -9,15 +9,14 @@ public class cashMachineProcces {
         System.out.println("1) Withdraw");
         System.out.println("2) Balance");
         System.out.println("3) Deposit");
-        System.out.println("4) previous transactions");
-        System.out.println("5) Transfer");
-        System.out.println("4) Return Card");
+        System.out.println("4) Transfer");
+        System.out.println("5) Return Card");
 
     }
 
-    public int withdrawAmount(int userWithdraw){
+    public double withdrawAmount(double userWithdraw){
 
-        int balance = 0;
+        double balance = 0;
 
         if(userWithdraw > availBalance){
             System.out.println("Amount exceed available amount");
@@ -33,7 +32,7 @@ public class cashMachineProcces {
     }
 
 
-    public int getAvailBalance(){
+    public double getAvailBalance(){
 
         System.out.println("Available Balance : " + availBalance);
         return  availBalance;
@@ -46,6 +45,15 @@ public class cashMachineProcces {
         System.out.println("New available balance : " + new_availableBalance);
 
         return new_availableBalance;
+    }
+
+    public double transfer(double amount) {
+
+        System.out.println("Transfer made successfully");
+        availBalance = availBalance + amount;
+        System.out.println("Available balance : " + availBalance);
+
+        return 0;
     }
 
 
