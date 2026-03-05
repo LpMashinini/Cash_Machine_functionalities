@@ -56,6 +56,11 @@ public class cashMachineProcces {
         return 0;
     }
 
+    public void returnCard(){
+        System.out.println("Thank you for using our ATM Machine.");
+        System.exit(0);
+    }
+
 
 
 }
