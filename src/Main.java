@@ -1,13 +1,15 @@
 import java.util.Scanner;
 
 public class Main {
+
+    private static String pin = "2026"; // user pin'
+
     public static void main(String[] args) throws Exception {
 
         //Object creation
         pinAuth auth = new pinAuth();
         cashMachineProcces machineProcces = new cashMachineProcces();
 
-        String pin = "2026"; // user pin
 
         // hashing user pin
         String storedHashedPin = auth.hashPin(pin);
